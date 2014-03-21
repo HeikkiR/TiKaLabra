@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        $teksti = "Testi";
-        echo $teksti;
-        
-        // put your code here
-        ?>
-    </body>
-</html>
+<body>
+    
+<h2>Muistilista kirjautuminen</h2>
+
+<form action="muistilista.php" method="post">
+Käyttäjätunnus: <input type="text" name="ktunnus"><br>
+Salasana: <input type="text" name="salasana"><br>
+<input type="submit" name="submit" value="Kirjaudu"> 
+<BR>
+<BR>
+<A HREF="http://hzrantal.users.cs.helsinki.fi/tika/testi.html"> Rekisteröidy tästä </A> 
+</form>
+
+</body>
+</html> 
