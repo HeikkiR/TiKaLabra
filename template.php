@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <style>
@@ -34,6 +34,8 @@ background-color:blueviolet;
 </head>
 
 <body>
+    <h1> MUISTILISTA </h1>    
+    
 <ul>
 <li><a href="#tarkeus">Täkeys järjestys</a></li>
 <li><a href="#Luokitus">Luokitus järjestys</a></li>
@@ -41,7 +43,6 @@ background-color:blueviolet;
 <li><a href="#luokatm">Muokkaa luokkia</a></li>
 
 </ul>
-    
-    <p>tekstiä</p>
+    <br>
 </body>
 </html>

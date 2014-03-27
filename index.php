@@ -1,15 +1,19 @@
 <html>
 <body>
     
-<h2>Muistilista kirjautuminen</h2>
-
+<h1>Muistilista kirjautuminen</h1>
+<br>
 <form action="muistilista.php" method="post">
-Käyttäjätunnus: <input type="text" name="ktunnus"><br>
-Salasana: <input type="text" name="salasana"><br>
+<p>Käyttäjätunnus: </p>
+
+    <input type="text" name="ktunnus">
+<p>Salasana: </p>
+
+<input type="text" name="salasana"><br><br>
 <input type="submit" name="submit" value="Kirjaudu"> 
 <BR>
 <BR>
-<A HREF="http://hzrantal.users.cs.helsinki.fi/tika/testi.html"> Rekisteröidy tästä </A> 
+<A HREF="http://hzrantal.users.cs.helsinki.fi/tika/rekiste.php"> Rekisteröidy tästä </A> 
 </form>
 
 </body>
