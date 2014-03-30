@@ -12,10 +12,12 @@ and open the template in the editor.
     <body>
         
         <?php
-  session_start();
-   if (isset($_SESSION['kirjautunut']))  {
-    $kayttaja = $_SESSION['kirjautunut'];
-    //Koodia, jonka vain kirjautunut käyttäjä saa suorittaa
+        require 'models/Kayttaja.php';
+        
+        session_start();
+        if (isset($_SESSION['kirjautunut']))  {
+            $user = $_SESSION['kirjautunut'];
+    
   
         
         
@@ -33,8 +35,11 @@ and open the template in the editor.
         $id = $kysely->fetchColumn(); //Hakee oletuksena ensimmäisen sarakkeen
         echo $id;
    }
+   else {
+       header('location:index.php');
+   }
          ?>
-        loppu
+        
         
     </body>
 </html>
