@@ -10,12 +10,19 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        
         <?php
+  session_start();
+   if (isset($_SESSION['kirjautunut']))  {
+    $kayttaja = $_SESSION['kirjautunut'];
+    //Koodia, jonka vain kirjautunut käyttäjä saa suorittaa
+  
+        
+        
         require('template.php');
-        ?>
-       <?php
+        
        
-        require_once 'Tietokantayhteys.php';
+        require_once 'libs/Tietokantayhteys.php';
         
         $yhteys = Tietokantayhteys::getTietokantayhteys();
         
@@ -25,8 +32,9 @@ and open the template in the editor.
         
         $id = $kysely->fetchColumn(); //Hakee oletuksena ensimmäisen sarakkeen
         echo $id;
-
+   }
          ?>
         loppu
+        
     </body>
 </html>

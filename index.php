@@ -1,9 +1,10 @@
 <html>
 <body>
     
-<h1>Muistilista kirjautuminen</h1>
+
+<h1>Muistilista kirjautuminen testi</h1>
 <br>
-<form action="muistilista.php" method="post">
+<form action="kokeileKirjautua.php" method="post">
 <p>Käyttäjätunnus: </p>
 
     <input type="text" name="ktunnus">
