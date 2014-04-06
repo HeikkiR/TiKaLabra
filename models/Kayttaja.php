@@ -9,6 +9,8 @@ class Kayttaja {
     $this->tunnus = $tunnus;
     $this->salasana = $salasana;
   }
+  
 
+  
   /* Kirjoita tähän gettereitä ja settereitä */
 }

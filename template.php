@@ -40,7 +40,7 @@ background-color:blueviolet;
 <li><a href="#tarkeus">Täkeys järjestys</a></li>
 <li><a href="#Luokitus">Luokitus järjestys</a></li>
 <li><a href="#askareetm">Muokkaa askareita</a></li>
-<li><a href="#luokatm">Muokkaa luokkia</a></li>
+<li><a href="Luokkienhallinta.php">Muokkaa luokkia</a></li>
 <li><a href="kirjauduUlos.php">Kirjaudu ulos tästä</a></li>
 </ul>
     <br>
