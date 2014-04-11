@@ -2,9 +2,9 @@
 require_once 'libs/Tietokantayhteys.php';
 
 class Luokka {
-    private $luokkanimi;
-    private $yliluokka;
-    private $luokankuvaus;
+    protected $luokkanimi;
+    protected $yliluokka;
+    protected $luokankuvaus;
 
     
     public function __construct() {
@@ -44,21 +44,23 @@ class Luokka {
         
         $tulokset = array();
         foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) { 
-            $luokka = new Luokka();
-            $luokka->setNimi($tulos->LuokkaNimi);
-            $luokka->setYliLuokka($tulos->yliluokka);
-            $luokka->setKuvaus($tulos->LuokkaKuvaus);
+            $luokkis = new Luokka();
+            $luokkis->setNimi($tulos->luokkanimi);
+            $luokkis->setYliLuokka($tulos->yliluokka);
+            $luokkis->setKuvaus($tulos->luokkakuvaus);
             
-            $tulokset[] = $luokka;
-        }
+            $tulokset[] = $luokkis;
+       }
         return $tulokset;
     }
     
-    public function muutaKuvaus() {
+    public function muutaKuvaus($kuvaus) {
         $sql = "UPDATE luokka SET luokkakuvaus = ? WHERE luokkanimi = ?";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
-        $tee = $kysely->execute(array($this->getKuvaus(),$this->getNimi()));                
+        $tee = $kysely->execute(array($kuvaus,$this->getNimi()));
+        
+        //$tee = $kysely->execute(array($this->getKuvaus(),$this->getNimi()));                
     }
     
     public function muutayliLuokka() {
