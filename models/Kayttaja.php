@@ -89,4 +89,12 @@ class Kayttaja {
         $tee = $kysely->execute(array($uusiSalasana,$this->getTunnus()));               
     }
     
+    public function teeKayttaja() {
+        $sql = "INSERT INTO Kayttaja(kayttajanimi,salasana) VALUES(?,?)";
+        $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
+        
+
+        $tee = $kysely->execute(array($this->getTunnus(),$this->getSalasana()));
+    }
+    
   }
