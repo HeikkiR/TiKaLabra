@@ -44,10 +44,10 @@ a.class2:active {text-decoration: none; color: blue;}
     <h1> MUISTILISTA </h1>    
     
 <ul>
-<li><a href="#tarkeus" class="class1">Täkeys järjestys</a></li>
+<li><a href="muistilista.php" class="class1">Täkeys järjestys</a></li>
 <li><a href="#Luokitus" class="class1">Luokitus järjestys</a></li>
 <li><a href="#askareetm" class="class1">Muokkaa askareita</a></li>
-<li><a href="Luokkienhallinta.php" class="class1"">Muokkaa luokkia</a></li>
+<li><a href="Luokkienhallinta.php" class="class1">Muokkaa luokkia</a></li>
 <li><a href="kirjauduUlos.php" class="class1">Kirjaudu ulos tästä</a></li>
 </ul>
     <br>

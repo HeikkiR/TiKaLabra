@@ -27,6 +27,7 @@
 
                 //$kayttaja = $tunnus;
                 $user = new Kayttaja($tunnus, $password);
+                
                 $_SESSION['kirjautunut'] = $user;
         
                 header('location:muistilista.php');

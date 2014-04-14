@@ -14,24 +14,32 @@ and open the template in the editor.
         <?php
         require 'models/Luokka.php';
         require 'models/Kayttaja.php';
+        require 'models/Askare.php';
         
         session_start();
         if (isset($_SESSION['kirjautunut']))  {
+            
             $user = $_SESSION['kirjautunut'];
         
-        require('template.php');
-        
-       
+        require('template.php');     
         require_once 'libs/Tietokantayhteys.php';
         
+        
+        $user = $_SESSION['kirjautunut'];
 
-/////////////testiä
+        $lista=Askare::listaaAskareet();
+        foreach($lista as $askareolio)  { ?>
+            <li><?php 
+           $nimi = $askareolio->getANimi();
+           if ($user->getTunnus() === $askareolio->getKNimi()) {
+            echo "<td><a href='#".$askareolio->getANimi()."' class=\"class2\">".$askareolio->getANimi()."</a></td>";
+           }
+            ?> </li> <br> <?php } 
+        
+        }
+        
+        
 
-
-/////////////////////////
-
-   }
-   
    else {
        header('location:index.php');
    }

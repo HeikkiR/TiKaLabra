@@ -14,12 +14,12 @@ class Kayttaja {
   public function __contruct() {
       
 }
-  /*
+  
   public function __construct($tunnus, $salasana) {
     $this->tunnus = $tunnus;
     $this->salasana = $salasana;
   }
-  */
+  
   public function setSalasana($salasana) {
       $this->salasana = $salasana;
   }
