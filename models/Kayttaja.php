@@ -5,17 +5,21 @@ require_once 'libs/Tietokantayhteys.php';
 
 class Kayttaja {
   
-  private $tunnus;
-  private $salasana;
-  private $etunimi;
-  private $sukunimi;
-  private $sysop;
+  protected $tunnus;
+  protected $salasana;
+  protected $etunimi;
+  protected $sukunimi;
+  protected $sysop;
 
+  public function __contruct() {
+      
+}
+  /*
   public function __construct($tunnus, $salasana) {
     $this->tunnus = $tunnus;
     $this->salasana = $salasana;
   }
-  
+  */
   public function setSalasana($salasana) {
       $this->salasana = $salasana;
   }
@@ -90,11 +94,10 @@ class Kayttaja {
     }
     
     public function teeKayttaja() {
-        $sql = "INSERT INTO Kayttaja(kayttajanimi,salasana) VALUES(?,?)";
+        $sql = "INSERT INTO Kayttaja(kayttajanimi,salasana,etunimi,sukunimi) VALUES(?,?,?,?)";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
-
-        $tee = $kysely->execute(array($this->getTunnus(),$this->getSalasana()));
+        $tee = $kysely->execute(array($this->getTunnus(),$this->getSalasana(),$this->getEtuNimi(),$this->getSukuNimi()));
     }
     
   }

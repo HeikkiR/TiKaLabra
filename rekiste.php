@@ -8,5 +8,5 @@ Muistilista rekisteröityminen <br>
                 <input type="text" name="salasana"> <br>
                 kirjoita: "varmistus" <br>
                 <input type="text" name="varmistus"> <br>
-                <input type="submit" name="poista" id="button" value="rekisteröidy" /> </form>
+                <input type="submit" name="rekiste" id="button" value="rekisteröidy" /> </form>
             

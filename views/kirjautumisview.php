@@ -5,9 +5,10 @@
 <h1>Muistilista kirjautuminen</h1>
 <br>
 <?php
+    if(isset($_GET['virhe'])) {
      if(($_GET['virhe']) === 'salasana') {
                 echo 'tunnus tai salasana virheellinen';             
-           }
+    } }
            ?>
 
 <form action="index.php" method="post">
