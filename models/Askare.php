@@ -32,8 +32,8 @@ class Askare {
         $this->luokka = $luokka;
     }
     
-    public function setKuvaus($luokankuvaus) {
-        $this->luokankuvaus = $luokankuvaus;
+    public function setKuvaus($kuvaus) {
+        $this->kuvaus = $kuvaus;
     }
     
     public function setId($id) {
@@ -42,6 +42,10 @@ class Askare {
     
     public function getANimi() {
         return $this->askarenimi;
+    }
+    
+    public function getId() {
+        return $this->id;
     }
        
     public function getKNimi() {
@@ -57,10 +61,10 @@ class Askare {
     }
     
     public function luoAskare() {
-        $sql = "INSERT INTO Askare(askerenimi,kayttajanimi) VALUES(?,?)";
+        $sql = "INSERT INTO Askare(askerenimi,kayttajanimi,askarekuvaus) VALUES(?,?,?)";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
-        $tee = $kysely->execute(array($this->getANimi(),$this->getKNimi()));
+        $tee = $kysely->execute(array($this->getANimi(),$this->getKNimi(),$this->getKuvaus()));
         }
                
     public function listaaAskareet() {
@@ -82,4 +86,21 @@ class Askare {
        }
         return $tulokset;
     }
+    
+    public function poistaAskareKannasta() {
+        $sql = "DELETE FROM Askare WHERE Askareid = ?";
+        $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
+        
+        $tee = $kysely->execute(array($this->getId()));
+    }
+    
+    
+    public function muutaKuvaus($kuvaus) {
+        $sql = "UPDATE Askare SET askarekuvaus = ? WHERE askerenimi = ?";
+        $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
+        
+        $tee = $kysely->execute(array($kuvaus,$this->getANimi()));                
+    }
+    
+    
 }
