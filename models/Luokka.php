@@ -16,9 +16,7 @@ class Luokka {
 
         $tee = $kysely->execute(array($this->getNimi(),$this->getKuvaus()));
         }
-        
-
-    
+  
     public function setNimi($luokkanimi) {
         $this->luokkanimi = $luokkanimi;
     }
@@ -33,7 +31,7 @@ class Luokka {
     
     public function listaaLuokat() {
         $yhteys = Tietokantayhteys::getTietokantayhteys();
-        $sql = "SELECT LuokkaNimi,YliLuokka,LuokkaKuvaus FROM Luokka";
+        $sql = "SELECT LuokkaNimi,YliLuokka,LuokkaKuvaus FROM Luokka ORDER BY LuokkaNimi ASC";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         $kysely->execute();
         
