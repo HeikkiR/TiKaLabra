@@ -60,8 +60,7 @@ Valitettavan rumaa koodia. Tässä periaatteessa controller ja view samassa.
                     <input type="hidden" name="askareId" value="<?php echo $askareolio->getANimi(); ?>"> 
                     <input type="submit" name="poista" id="button" value="Poista" /> </form>
 
-            <?php echo 'Askareen luokka: ' . $askareolio->getLuokka(); ?>
-            <br>Askareen kuvaus:
+            <?php echo $askareolio->getLuokka(); ?>
                 <form action="askarepaivtys.php"  method="post"> 
                     <input type="hidden" name="animi" value="<?php echo $nimi; ?>"> 
                     <textarea name="kuvaus" rows="4" cols="50"><?php echo $askareolio->getKuvaus(); ?></textarea>'
