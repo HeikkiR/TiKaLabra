@@ -8,18 +8,13 @@ class Luokka {
 
     
     public function __construct() {
-    //   $yliluokka = "{NULL}";// $this->luokkanimi = $luokkanimi;
-    //   $luokkakuvaus = "{NULL}";
-    //   $empty = "{NULL}";
     }
     
     public function luoLuokkaKantaan() {
         $sql = "INSERT INTO Luokka(luokkanimi,luokkakuvaus) VALUES(?,?)";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
-        
 
         $tee = $kysely->execute(array($this->getNimi(),$this->getKuvaus()));
-
         }
         
 
@@ -58,17 +53,14 @@ class Luokka {
         $sql = "UPDATE luokka SET luokkakuvaus = ? WHERE luokkanimi = ?";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
-        $tee = $kysely->execute(array($kuvaus,$this->getNimi()));
-        
-        //$tee = $kysely->execute(array($this->getKuvaus(),$this->getNimi()));                
+        $tee = $kysely->execute(array($kuvaus,$this->getNimi()));               
     }
     
     public function muutayliLuokka() {
         $sql = "UPDATE luokka SET yliluokka = ? WHERE luokkanimi = ?";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
-        $tee = $kysely->execute(array($this->getYliluokka(),$this->getNimi()));
-    
+        $tee = $kysely->execute(array($this->getYliluokka(),$this->getNimi()));  
     }
     
     public function poistaLuokkaKannasta() {

@@ -61,15 +61,15 @@ class Askare {
     }
     
     public function luoAskare() {
-        $sql = "INSERT INTO Askare(askerenimi,kayttajanimi,askarekuvaus) VALUES(?,?,?)";
+        $sql = "INSERT INTO Askare(askerenimi,kayttajanimi,askarekuvaus,luokkanimi) VALUES(?,?,?,?)";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
-        $tee = $kysely->execute(array($this->getANimi(),$this->getKNimi(),$this->getKuvaus()));
+        $tee = $kysely->execute(array($this->getANimi(),$this->getKNimi(),$this->getKuvaus(),$this->getLuokka()));
         }
                
     public function listaaAskareet() {
         $yhteys = Tietokantayhteys::getTietokantayhteys();
-        $sql = "SELECT askareid,askerenimi,kayttajanimi,askarekuvaus,luokkanimi FROM Askare";
+        $sql = "SELECT askareid,askerenimi,kayttajanimi,askarekuvaus,luokkanimi FROM Askare ORDER BY askerenimi ASC";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         $kysely->execute();
         
@@ -86,6 +86,27 @@ class Askare {
        }
         return $tulokset;
     }
+    
+    public function listaaAskareetLuokittain() {
+        $yhteys = Tietokantayhteys::getTietokantayhteys();
+        $sql = "SELECT askareid,askerenimi,kayttajanimi,askarekuvaus,luokkanimi FROM Askare ORDER BY LuokkaNimi ASC";
+        $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
+        $kysely->execute();
+        
+        $tulokset = array();
+        foreach($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) { 
+            $askareolio = new Askare();
+            $askareolio->setId($tulos->askareid);
+            $askareolio->setANimi($tulos->askerenimi);
+            $askareolio->setKnimi($tulos->kayttajanimi);
+            $askareolio->setKuvaus($tulos->askarekuvaus);
+            $askareolio->setLuokka($tulos->luokkanimi);
+            
+            $tulokset[] = $askareolio;
+       }
+        return $tulokset;
+    }
+    
     
     public function poistaAskareKannasta() {
         $sql = "DELETE FROM Askare WHERE Askareid = ?";

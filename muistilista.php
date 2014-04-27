@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Näyttää askareet ja tarjoaa perus työkalut niiden muokkauksee. 
+Valitettavan rumaa koodia. Tässä periaatteessa controller ja view samassa.
 -->
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,9 +23,31 @@ and open the template in the editor.
         require_once 'libs/Tietokantayhteys.php';
         $user = $_SESSION['kirjautunut'];
 
-        echo 'Askareet satunnaisessa järjestyksessä: <br> <br>';
+// Seuraava if-else lause valitsee järjestyksen. Html-koodia seassa.
+        $jarjestys = $_POST['jarjestys'];
+        if ($jarjestys === 'luokka') {
+            echo 'Askareet järjestettynä luokittain ';
+            $lista = Askare::listaaAskareetLuokittain();
+            ?>
+            <form action="muistilista.php" method="post">
+                <input type="hidden" name="jarjestys" value="aakkos">
+                <input type="submit" name="jarsubmit" value="Järjestä nimen mukaan"/>
+            </form>           
+            <?php
+        }
+         else {
+            echo 'Askareet aakkosjärjestyksessä:';
+            $lista = Askare::listaaAskareet();
+            ?>
+            <form action="muistilista.php" method="post">
+                  <input type="hidden" name="jarjestys" value="luokka">
+                <input type="submit" name="jarsubmit" value="Järjestä luokittain"/>
+            </form>
+            <?php
+        }
+        echo'<br> <br>';
 
-        $lista = Askare::listaaAskareet();
+// Seuraava foreach hakee käyttäjän askareiden tiedot modelista ja näyttää ne, sekä tarjoaa muokkaus mahdollisuudet.
         foreach ($lista as $askareolio) {
             ?>
             <li><?php
@@ -37,6 +59,8 @@ and open the template in the editor.
                 <form action="poistaaskare.php"  method="post"> 
                     <input type="hidden" name="askareId" value="<?php echo $askareolio->getANimi(); ?>"> 
                     <input type="submit" name="poista" id="button" value="Poista" /> </form>
+
+            <?php echo 'Askareen luokka: ' . $askareolio->getLuokka(); ?>
 
                 <form action="askarepaivtys.php"  method="post"> 
                     <input type="hidden" name="animi" value="<?php echo $nimi; ?>"> 
