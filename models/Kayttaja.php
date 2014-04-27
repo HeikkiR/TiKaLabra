@@ -10,11 +10,11 @@ class Kayttaja {
   protected $etunimi;
   protected $sukunimi;
   protected $sysop;
-
+/*
   public function __contruct() {
       
 }
-  
+  */
   public function __construct($tunnus, $salasana) {
     $this->tunnus = $tunnus;
     $this->salasana = $salasana;
@@ -87,6 +87,7 @@ class Kayttaja {
     }
     
     public function muutaSalasana($uusiSalasana) {
+        $this->salasana=$uusiSalasana;
         $sql = "UPDATE Kayttaja SET salasana = ? WHERE Kayttajanimi = ?";
         $kysely = Tietokantayhteys::getTietokantayhteys()->prepare($sql);
         
@@ -99,5 +100,5 @@ class Kayttaja {
         
         $tee = $kysely->execute(array($this->getTunnus(),$this->getSalasana(),$this->getEtuNimi(),$this->getSukuNimi()));
     }
-    
+
   }
